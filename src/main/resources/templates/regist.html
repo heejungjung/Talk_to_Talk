@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet" href="/resources/static/css/style.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -36,7 +36,7 @@
 	<div class="container text-center">
 		<h2>회원가입</h2>
 			<hr>
-				<form class="form-horizontal" action="save-user" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="/save-user" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label class="control-label col-md-4">프로필사진</label>
 						<div class="col-md-4">
@@ -72,7 +72,7 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label class="control-label col-md-4">성별</label>
 						<div class="col-md-4">
 							<input type="radio" name="sex" value="${user.sex}"><img src="/static/css/images/man.png" width="50px">
@@ -85,7 +85,7 @@
 						<div class="col-md-4">
 							 <input type='date' name='userBirthday' style="text-align:center; width:350px;" value="${user.birthday}">
 						</div>
-					</div>
+					</div> -->
 
 					<div class="form-group">
 						<label class="control-label col-md-4">이메일</label>
@@ -98,7 +98,7 @@
 					
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary" value="가입하기" />
-						<a href="/welcome"><input type="button" class="btn btn-primary" value="돌아가기" /></a>
+						<a href="/"><input type="button" class="btn btn-primary" value="돌아가기" /></a>
 					</div>
 				</form>
 			</div>

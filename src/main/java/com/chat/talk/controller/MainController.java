@@ -48,7 +48,6 @@ public class MainController {
 	@PostMapping("/save-user")
 	public String registUser(@ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request,
 			@RequestPart MultipartFile files) throws Exception {
-
 		Files file = new Files();
 
 		String sourceFileName = files.getOriginalFilename();
