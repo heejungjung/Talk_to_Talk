@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
+<title>Talk-to-Talk</title>
+
+</head>
+
+<body style="overflow: auto;">
+
+	<div role="navigation">
+		<div class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
+			<a href="/welcome" class="navbar-brand">Talk-to-Talk</a>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/regist"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+					<li><a href="/logging"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div id="bluepink">
+			<input class="hidden" id="hey" value="${user.userid}">
+			<div id="room-page">
+				<div class="chat-container">
+					<div class="chat-header">
+						<h3>채팅방 목록<button id="createRoomButton" class="imgbtn"></button></h3>
+					</div>
+					<ul id="listRoom" class="list-group">
+
+					</ul>
+					<form id="createRoomForm" name="createRoomForm">
+						<div class="form-group">
+							<div class="input-group clearfix">
+								<input type="text" id="roomName" name="roomName"
+									placeholder="Enter Chat Room name" autocomplete="off"
+									class="form-control" />
+								<button type="submit" class="btn btn-gray">방 개설</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="chat-page" class="hidden">
+				<div class="chat-container">
+					<div class="chat-header">
+						<h2>
+							채팅방 [<span id="room-id-display"></span>]
+						</h2>
+					</div>
+					<div class="connecting">연결중...</div>
+					<ul id="messageArea">
+
+					</ul>
+					<form id="messageForm" name="messageForm" nameForm="messageForm">
+						<div class="form-group">
+							<div class="input-group clearfix">
+								<input type="text" id="message" placeholder="Type a message...or /join [room-id] to join another room or /leave to leave current room."
+									autocomplete="off" class="form-control" />
+								<button type="submit" class="btn btn-primary">보내기</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="/static/js/main.js"></script>
+	
+</body>
+</html>

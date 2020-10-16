@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+
+<title>Talk-to-Talk</title>
+
+</head>
+
+<body style="overflow: auto;">
+
+	<div role="navigation">
+		<div
+			class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
+			<a href="/welcome" class="navbar-brand">Talk-to-Talk</a>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/regist"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+					<li><a href="/logging"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-sm">
+		<div class="form-field">
+			<div class="form-field__control">
+				<input id="lastname" type="text" class="form-field__input" placeholder=" " /> <label for="lastname"
+					class="form-field__label">최대인원 :</label>
+					<div class="form-field__bar"></div>
+						<select name="people">
+							<option value="none"></option>
+							<option value="one">1</option>
+							<option value="two">2</option>
+							<option value="three">3</option>
+							<option value="four">4</option>
+							<option value="five">5</option>
+							<option value="six">6</option>
+							<option value="seven">7</option>
+							<option value="eight">8</option>
+							<option value="nine">9</option>
+							<option value="ten">10</option>
+						</select>
+			</div>
+		</div>
+
+		<div class="col-sm">
+			<div class="form-field">
+				<div class="form-field__control">
+					<input id="lastname" type="text" class="form-field__input"
+						placeholder=" " /> <label for="lastname"
+						class="form-field__label">해시태그 :</label>
+					<div class="form-field__bar"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-field">
+					<div class="form-field__control">
+						<label for="email" class="form-field__label">최대 인원</label> <input
+							id="email" type="email" class="form-field__input" />
+					</div>
+
+					<form></form>
+
+				</div>
+			</div>
+		</div>
+
+			<div class="col-sm">
+				<div class="form-field">
+					<div class="form-field__control">
+						<label for="city" class="form-field__label">해시태그</label> <input
+							id="city" type="text" class="form-field__input" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<form action="writeDo.php" method="POST" id="tag-form">
+				<input type="hidden" value="" name="tag" id="rdTag" />
+				<button type="submit">태그등록</button>
+			</form>
+	
+			<ul id="tag-list">
+			</ul>
+	
+			<div>
+				<input type="text" id="tag" size="7" placeholder="태그입력" />
+			</div>
+	
+		</div>
+
+
+	<button type="submit">방 개설하기</button>
+	<button type="submit">나가기</button>
+	
+	
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="/static/js/main.js"></script>
+	
+</body>
+</html>
