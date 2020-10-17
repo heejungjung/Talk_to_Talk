@@ -265,7 +265,10 @@ button.accent {
 	background-size:100% 100%;
 }
 
-
+.test{
+	font-size: 30px;
+	color: red;
+}
 
 @media screen and (max-width: 730px) {
 

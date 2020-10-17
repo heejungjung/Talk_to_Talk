@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/resources/static/css/style.css" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css">
 
 <title>Talk-to-Talk</title>
 
 </head>
+
 
 <body style="overflow: auto;">
 
@@ -32,77 +31,76 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container text-center">
 		<h2>회원가입</h2>
-			<hr>
-				<form class="form-horizontal" action="/save-user" method="post" enctype="multipart/form-data">
-					<div class="form-group">
-						<label class="control-label col-md-4">프로필사진</label>
-						<div class="col-md-4">
-							<div class="preview">
-								<img id="gd" />
-							</div>
-							<input type="file" class="form-control" name="files" id="imgInput" />
-						</div>
+		<hr>
+		<form class="form-horizontal" action="/save-user" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="control-label col-md-4">프로필사진</label>
+				<div class="col-md-4">
+					<div class="preview">
+						<img id="gd" />
 					</div>
-					
-					<input type="hidden" name="id" value="${user.id}" />
-					<div class="form-group">
-						<label class="control-label col-md-4">아이디</label>
-						<div class="col-md-4">
-							<input type="text" class="form-control" name="userid" placeholder="아이디를 입력하세요"
-								value="${user.userid}" />
-							<input style="float:left;" type="button" value="중복확인"/><div id="idCheck"> </div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-md-4">비밀번호</label>
-						<div class="col-md-4">
-							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요"
-								value="${user.password}">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-md-4">닉네임</label>
-						<div class="col-md-4">
-							<input type="text" class="form-control" name="nickname" placeholder="닉네임을 입력하세요" value="${user.nickname}">
-						</div>
-					</div>
-					
-					<!-- <div class="form-group">
-						<label class="control-label col-md-4">성별</label>
-						<div class="col-md-4">
-							<input type="radio" name="sex" value="${user.sex}"><img src="/static/css/images/man.png" width="50px">
-							<input type="radio" name="sex" value="${user.sex}"><img src="/static/css/images/woman.png" width="50px">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="control-label col-md-4">생년월일</label>
-						<div class="col-md-4">
-							 <input type='date' name='userBirthday' style="text-align:center; width:350px;" value="${user.birthday}">
-						</div>
-					</div> -->
-
-					<div class="form-group">
-						<label class="control-label col-md-4">이메일</label>
-						<div class="col-md-4">
-							<input type="email" class="form-control" name="email" placeholder="이메일을 입력하세요"
-								value="${user.email}">
-						</div>
-					</div>
-					
-					
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary" value="가입하기" />
-						<a href="/"><input type="button" class="btn btn-primary" value="돌아가기" /></a>
-					</div>
-				</form>
+					<input type="file" class="form-control" name="files" id="imgInput" />
+				</div>
 			</div>
-	
+
+			<input type="hidden" name="id" value="${user.id}" />
+			<div class="form-group">
+				<label class="control-label col-md-4">아이디</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="userid" placeholder="아이디를 입력하세요" /> 
+						<input style="float: left;" type="button" value="중복확인" />
+					<div id="idCheck"></div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4">비밀번호</label>
+				<div class="col-md-4">
+					<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4">닉네임</label>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="nickname" placeholder="닉네임을 입력하세요" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4">성별</label>
+				<div class="col-md-4">
+					<input type="radio" name="sex" value="M"><img src="/css/pic/man.png" width="50px"> 
+					<input type="radio" name="sex" value="F"><img src="/css/pic/woman.png" width="50px">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4">생년월일</label>
+				<div class="col-md-4">
+					<input type='date' name='birthday' style="text-align: center; width: 350px;" value="yyyy-mm-dd" id='idiot'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-4">이메일</label>
+				<div class="col-md-4">
+					<input type="email" class="form-control" name="email" placeholder="이메일을 입력하세요" />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="가입하기" /> 
+				<a href="/"><input type="button" class="btn btn-primary" value="돌아가기" /></a>
+			</div>
+		</form>
+	</div>
+
+
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
@@ -117,21 +115,28 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="/static/js/main.js"></script>
-	
+
 </body>
 <script type="text/javascript">
-   function readURL(input) {
-       if (input.files && input.files[0]) {
-           var reader = new FileReader();
-           reader.onload = function(e) {
-               $('#gd').attr('src', e.target.result);
-           }
-           reader.readAsDataURL(input.files[0]);
-       }
-   }
-   
-   $("#imgInput").change(function() {
-       readURL(this);
-   });
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#gd').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgInput").change(function() {
+		readURL(this);
+	});
 </script>
+
+<!-- 오늘날짜 넘어서 날짜 선택못하게.. id값은 idiot. -->
+<script type="text/javascript">
+	idiot.max = new Date().toISOString().split("T")[0];
+</script>
+
+
 </html>
