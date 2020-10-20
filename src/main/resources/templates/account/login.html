@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css">
+
+<title>Login</title>
+</head>
+<body style="overflow: auto;">
+   <div id="navi_account">
+   <div class="banner"><a href="/"><img class="logo_account" src="/images/logo.png"></a></div>
+	<div class="navbar-collapse">
+         <a th:href="@{/account/regist}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-user"></span> 회원가입</a>&nbsp &nbsp
+         <a th:href="@{/account/login}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-log-in"></span> 로그인</a>
+		<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+			<span style="color:white" sec:authentication="name">사용자</span>
+			<button type="submit">로그아웃</button>
+		</form>
+	</div>
+   </div>
+
+	<div class="container text-center">
+		<h2>로그인</h2>
+		<hr>
+
+		<div th:if="${param.error}" class="alert alert-danger" role="alert">
+			아이디나 비밀번호를 다시 확인해주세요</div>
+		<div th:if="${param.logout}">로그아웃 되었습니다.</div>
+		<form class="form-signin" th:action="@{/account/login}" method="post">
+			
+			<h1 class="h3 mb-3 font-weight-normal">로그인을 해주세요</h1>
+			<div th:if="${param.error}" class="alert alert-danger" role="alert">
+				아이디나 비밀번호가 틀립니다</div>
+			<div th:if="${param.logout}" class="alert alert-primary" role="alert">
+				You have been logged out.</div>
+			<label for="username" class="sr-only">Username</label>
+			<input type="text" id="username" name="username" class="form-control"
+				placeholder="Username" required autofocus>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" name="password"
+				class="form-control" placeholder="Password" required>
+			<!-- <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

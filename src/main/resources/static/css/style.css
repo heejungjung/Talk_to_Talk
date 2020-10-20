@@ -3,13 +3,307 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-html,body {
-    height: 100%;
-    overflow: hidden;
-    font-size: 1.2rem;
+@font-face {
+  font-family: Clip;
+  src: url("https://acupoftee.github.io/fonts/Clip.ttf");
+}
+.a{
+   height:100%;
+}
+#navi{
+   position:fixed;
+   width:100%;
+   height:9%;
+}
+#navi_account{
+   margin:0;
+   width:100%;
+   height:15%;
+   background:url("/images/banner.jpg") no-repeat;
+   background-size:cover;
+}
+#navi_account_popup{
+   margin:0;
+   width:100%;
+   height:40%;
+   
+   background-size:cover;
+}
+#logo{
+   height:80%;
+   margin:0.2%;
+   padding:0;
+}
+.banner{
+	margin-left:30%;
+	display:inline;
 }
 
+.banner_popup{
+	background:url("/images/banner_popup.jpg") no-repeat;
+	background-size:cover;
+	background-position:center;
+	height: 80px;
+}
+.logo_account{
+	width: 10%;
+	border: 0%;
+}
+.home {
+  overflow: auto;
+  background-color: #1d181d;
+  background-image: linear-gradient(335deg, black 23px, transparent 23px),
+    linear-gradient(155deg, black 23px, transparent 23px),
+    linear-gradient(335deg, black 23px, transparent 23px),
+    linear-gradient(155deg, black 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+.navbar-collapse{
+	float:right;
+	margin-top:0.8%;
+	margin-right:1%;
+	height:100%;
+	font-size: 1.5em;
+}
+a:HOVER {
+   text-decoration: none;
+   color: #ffe6ff;
+}
+.sign {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  left: 50%;
+  top: 50%;
+  font-family: "Clip";
+  text-transform: uppercase;
+  font-size: 10em;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+/* popup */
+.form-field {
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom: 5%;
+}
+.form-field__label {
+  display: flex;
+  justify-content:center;
+  align-items:flex-start;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 18px 12px 0 ;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.form-field__control {
+  background: #eee;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  position: relative;
+  }
+
+.form-field__input,
+.form-field__textarea {
+
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #999;
+  color: #333;
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  padding: 0 12px 10px 12px;
+  width: 100%;
+  color: gray;
+}
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+  28%,
+  33% {
+    color: #ff65bd;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #ff2483;
+    text-shadow: none;
+  }
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 .clearfix:after {
     display: block;
     content: "";
@@ -32,20 +326,18 @@ html,body {
 }
 
 .preview {
-	border: 1px solid black;
-	width: 350px;
-	margin-top: 10px;
+   border: 1px solid black;
+   width: 350px;
+   margin-top: 10px;
 }
 
 .preview img {
-	max-width: 100%;
-	max-height: 300px;
+   max-width: 100%;
+   max-height: 300px;
 }
 #bluepink {
-	background-image: url("https://image.freepik.com/free-photo/pastel-tone-pink-gradient-defocused-abstract-photo-smooth-lines-color-background_49683-4158.jpg");
-	height: 100%;
-	width: 100%;
-	background-size:100% 100%;
+   background-image: url("https://image.freepik.com/free-photo/pastel-tone-pink-gradient-defocused-abstract-photo-smooth-lines-color-background_49683-4158.jpg");
+   background-size:cover;
 }
 input {
     padding-left: 10px;
@@ -133,22 +425,18 @@ button.accent {
 }
 
 .chat-container {
-	top: 30px;
+   top: 30px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     height: calc(100% - 60px);
-    max-height: 800px;
+    max-height: 1000px;
     position: relative;
 }
-#createRoomButton{
-	
-        float: right;
-}
 .list-group {
-    height: 600px;
+    height: 700px;
 }
 
 #chat-page ul {
@@ -237,11 +525,6 @@ button.accent {
     border-bottom: 1px solid #ececec;
 }
 
-.chat-header h2 {
-    margin: 0;
-    font-weight: 500;
-}
-
 .connecting {
     padding-top: 5px;
     text-align: center;
@@ -250,26 +533,21 @@ button.accent {
     top: 65px;
     width: 100%;
 }
-
-#createRoomButton {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background-color: white;
-	width: 50px;
-	height: 50px;
+#createRoomButton{
+   background-image: url('/images/plus_button.png');
+   background-size:100% 100%;
+   width:6%;
+   float:right;
+   
+   margin: 0;
+   padding: 0;
+   background-color: white;
 }
-
-.imgbtn{
-	background-image: url('./images/1.png');
-	background-size:100% 100%;
+.chat-header>h1{
+	margin:0;
+	padding:0;
+	border:0;
 }
-
-.test{
-	font-size: 30px;
-	color: red;
-}
-
 @media screen and (max-width: 730px) {
 
     .chat-container {
@@ -305,6 +583,7 @@ button.accent {
 
     .chat-header {
         padding: 10px;
+        
     }
 
     .connecting {
@@ -315,3 +594,4 @@ button.accent {
         font-size: 1.1em;
     }
 }
+

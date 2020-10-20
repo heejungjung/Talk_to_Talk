@@ -256,24 +256,11 @@ function getAvatarColor(messageSender) {
 }
 
 function popup(){
-	var url = "chatroom";
+	var url = "roompopup";
 	var name = "popup test";
-	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	var option = "width = 500, height = 800, top = 100, left = 200, location = no"
 	window.open(url, name, option);
 }
-/*
-function readURL(input) {
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(e) {
-		    alert(document.getElementsByClassName('preview'));
-			document.getElementsByClassName('preview').createElement('img');
-			document.getElementsById('gd').setAttribute('src',e.target.result);
-		}
-		reader.readAsDataURL(input.files[0]);
-	}
-}
-*/
 createRoomForm.addEventListener("submit", connect, true);
 messageForm.addEventListener("submit", sendMessage, true);
 document.getElementById('createRoomButton').addEventListener('click', popup);

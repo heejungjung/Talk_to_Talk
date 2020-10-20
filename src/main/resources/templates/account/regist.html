@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -18,24 +18,24 @@
 
 <body style="overflow: auto;">
 
-
-	<div role="navigation">
-		<div
-			class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-			<a href="/" class="navbar-brand">Talk-to-Talk</a>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/regist"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-				</ul>
-			</div>
-		</div>
+   <div id="navi_account">
+   <div class="banner"><a href="/"><img class="logo_account" src="/images/logo.png"></a></div>
+	<div class="navbar-collapse">
+         <a th:href="@{/account/regist}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-user"></span> 회원가입</a>&nbsp &nbsp
+         <a th:href="@{/account/login}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-log-in"></span> 로그인</a>
+		<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+			<span style="color:white" sec:authentication="name">사용자</span>
+			<button type="submit">로그아웃</button>
+		</form>
 	</div>
+   </div>
 
 	<div class="container text-center">
 		<h2>회원가입</h2>
 		<hr>
-		<form class="form-horizontal" action="/save-user" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" th:action="@{/account/regist}" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="control-label col-md-4">프로필사진</label>
 				<div class="col-md-4">
@@ -46,20 +46,20 @@
 				</div>
 			</div>
 
-			<input type="hidden" name="id" value="${user.id}" />
+			
 			<div class="form-group">
-				<label class="control-label col-md-4">아이디</label>
+				<label for="username" class="control-label col-md-4">아이디</label>
 				<div class="col-md-4">
-					<input type="text" class="form-control" name="userid" placeholder="아이디를 입력하세요" /> 
+					<input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" /> 
 						<input style="float: left;" type="button" value="중복확인" />
 					<div id="idCheck"></div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-md-4">비밀번호</label>
+				<label for="inputPassword" class="control-label col-md-4">비밀번호</label>
 				<div class="col-md-4">
-					<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요" />
+					<input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호를 입력하세요" />
 				</div>
 			</div>
 
@@ -73,8 +73,8 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">성별</label>
 				<div class="col-md-4">
-					<input type="radio" name="sex" value="M"><img src="/css/pic/man.png" width="50px"> 
-					<input type="radio" name="sex" value="F"><img src="/css/pic/woman.png" width="50px">
+					<input type="radio" name="sex" value="M"><img src="/images/man.png" width="50px"> 
+					<input type="radio" name="sex" value="F"><img src="/images/woman.png" width="50px">
 				</div>
 			</div>
 

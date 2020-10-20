@@ -13,6 +13,7 @@ public class FilesService {
 	
 	public void save(Files files) {
 		Files f = new Files();
+		f.setUsername(files.getFilename());
 		f.setFilename(files.getFilename());
 		f.setFile1(files.getFile1());
 		f.setFileurl(files.getFileurl());

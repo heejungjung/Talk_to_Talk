@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,36 +7,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
 
 <title>Talk-to-Talk</title>
-
 </head>
 
-<body style="overflow: auto;">
+<body style="overflow:auto;font-size:13px;">
 
-	<div role="navigation">
-		<div
-			class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-			<a href="/welcome" class="navbar-brand">Talk-to-Talk</a>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/regist"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-					<li><a href="/logging"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+   <div id="navi_account_popup"><div class="banner_popup"></div></div>
 	
 	<div class="col-sm">
 		<div class="form-field">
 			<div class="form-field__control">
-				<input id="lastname" type="text" class="form-field__input" placeholder=" " /> <label for="lastname"
-					class="form-field__label">최대인원 :</label>
+				<input id="lastname" type="text" class="form-field__input" placeholder=" " />
+				<label for="lastname" class="form-field__label">최대인원 :</label>
 					<div class="form-field__bar"></div>
 						<select name="people">
 							<option value="none"></option>
@@ -57,9 +45,8 @@
 		<div class="col-sm">
 			<div class="form-field">
 				<div class="form-field__control">
-					<input id="lastname" type="text" class="form-field__input"
-						placeholder=" " /> <label for="lastname"
-						class="form-field__label">해시태그 :</label>
+					<input id="lastname" type="text" class="form-field__input" placeholder=" " />
+					<label for="lastname" class="form-field__label">해시태그 :</label>
 					<div class="form-field__bar"></div>
 				</div>
 			</div>
@@ -70,12 +57,9 @@
 			<div class="col-sm">
 				<div class="form-field">
 					<div class="form-field__control">
-						<label for="email" class="form-field__label">최대 인원</label> <input
-							id="email" type="email" class="form-field__input" />
+						<label for="email" class="form-field__label">최대 인원</label>
+						<input id="email" type="email" class="form-field__input" />
 					</div>
-
-					<form></form>
-
 				</div>
 			</div>
 		</div>
@@ -83,8 +67,8 @@
 			<div class="col-sm">
 				<div class="form-field">
 					<div class="form-field__control">
-						<label for="city" class="form-field__label">해시태그</label> <input
-							id="city" type="text" class="form-field__input" />
+						<label for="city" class="form-field__label">해시태그</label>
+						<input id="city" type="text" class="form-field__input" />
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <meta charset="UTF-8">
@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/resources/static/css/style.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -18,20 +17,25 @@
 
 </head>
 
-<body style="overflow: auto;">
+<body class="home" style="overflow: auto;">
+	
+   <div id="navi">
+      <a href="/"><img id="logo" alt="Talk To Talk" src="/images/logo_pink.png"></a>
+      <div class="navbar-collapse">
+         <a th:href="@{/account/regist}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-user"></span> 회원가입</a>&nbsp &nbsp
+         <a th:href="@{/account/login}" sec:authorize="!isAuthenticated()">
+         	<span class="glyphicon glyphicon-log-in"></span> 로그인</a>
+		<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+			<span style="color:white" sec:authentication="name">사용자</span>
+			<button type="submit">로그아웃</button>
+		</form>
+      </div>
+   </div>
 
-	<div role="navigation">
-		<div
-			class="navbar navbar-inverse navbar-expand-sm bg-dark navbar-dark">
-			<a href="/" class="navbar-brand">Talk-to-Talk</a>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/regist"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-					<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+   <div class="sign">
+      <a href="/chat"><span class="fast-flicker">T</span>alk To T<span class="flicker">a</span>lk</a>
+   </div>
 
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -46,7 +50,6 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="/static/js/main.js"></script>
 </body>
 
 </html>
