@@ -8,8 +8,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Data
 @Entity
+@Data
 @Table(name="profile")
 public class Files {
    @Id
@@ -18,7 +18,7 @@ public class Files {
    
    String username;
    String filename;
-   String file1;
+   String rawname;
    String fileurl;
    String message;
 

@@ -3,10 +3,6 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-@font-face {
-  font-family: Clip;
-  src: url("https://acupoftee.github.io/fonts/Clip.ttf");
-}
 .a{
    height:100%;
 }
@@ -19,14 +15,13 @@
    margin:0;
    width:100%;
    height:15%;
-   background:url("/images/banner.jpg") no-repeat;
+   background:url("/images/logo/banner.jpg") no-repeat;
    background-size:cover;
 }
 #navi_account_popup{
    margin:0;
    width:100%;
    height:40%;
-   
    background-size:cover;
 }
 #logo{
@@ -40,7 +35,7 @@
 }
 
 .banner_popup{
-	background:url("/images/banner_popup.jpg") no-repeat;
+	background:url("/images/logo/banner_popup.jpg") no-repeat;
 	background-size:cover;
 	background-position:center;
 	height: 80px;
@@ -120,6 +115,8 @@ a:HOVER {
   border-radius: 8px 8px 0 0;
   overflow: hidden;
   position: relative;
+  width: 400px;
+  
   }
 
 .form-field__input,
@@ -431,12 +428,14 @@ button.accent {
     margin-right: auto;
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    height: calc(100% - 60px);
+    height: 800px;
     max-height: 1000px;
     position: relative;
 }
 .list-group {
     height: 700px;
+    overflow: auto;
+    overflow-y: scroll;
 }
 
 #chat-page ul {
@@ -445,8 +444,8 @@ button.accent {
     margin: 0;
     overflow: auto;
     overflow-y: scroll;
-    padding: 0 20px 0px 20px;
-    height: calc(100% - 150px);
+    padding: 0 0px 0px 0px;
+    height: 680px;
 }
 
 #chat-page #messageForm {
@@ -457,7 +456,6 @@ button.accent {
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0;
-    border-bottom: 1px solid #f4f4f4;
 }
 
 #chat-page ul li p {
@@ -476,36 +474,140 @@ button.accent {
     word-wrap: break-word;
 }
 
-#chat-page .chat-message {
-    padding-left: 68px;
-    position: relative;
+.choi {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	padding: 0;
 }
 
-#chat-page .chat-message i {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    overflow: hidden;
-    left: 10px;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 18px;
-    line-height: 42px;
-    color: #fff;
-    text-align: center;
-    border-radius: 50%;
-    font-style: normal;
-    text-transform: uppercase;
+.choi1 {
+	width: 150px;
+	height: 58px;
 }
 
-#chat-page .chat-message span {
-    color: #333;
-    font-weight: 600;
+#choi2 {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
-#chat-page .chat-message p {
-    color: #43464b;
+.choi3 {
+	width: 150px;
+	height: 40px;
 }
+
+
+
+
+
+
+
+.chatBox{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin: 40px;
+  margin-bottom: 0;
+  font-size: 13px;
+  overflow: auto;
+}
+.chat-message-group .chat-thumb{
+  float: left;
+  height:9px;
+  width: 7%;
+  margin-right: 3%;
+}
+.chat-message-group .chat-messages{
+  float: left;
+  width: 90%;
+  margin-bottom: 20px;
+}
+.chat-message-group .message{
+  float: left;
+  padding: 10px;
+  background: #ecf1f8;
+  font-size: 13px;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  word-break:normal;
+}
+.chat-messages .from{
+  float: left;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 11px;
+}
+.chat-thumb img{
+  	width: 100%;
+	border-radius: 40px;
+}
+.writer-user .chat-thumb{
+	display:none;
+}
+.writer-user .chat-messages{
+  float: right;
+  width: 100%;
+}
+.writer-user .chat-messages .message{
+  float: right;
+  background: #683db8;
+  color: #FFF;
+}
+.writer-user .chat-messages .from{
+  float: left;
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+
+.gd {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+#gd1{
+	border: 1px dashed red;
+}
+.gd1 {
+	border: 1px dashed red;
+	width: 15%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.gd2 {
+	border: 1px dashed red;
+	width: 55%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.gd3 {
+	border: 1px dashed red;
+	width: 25%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #messageForm .input-group input {
     float: left;
@@ -534,11 +636,21 @@ button.accent {
     width: 100%;
 }
 #createRoomButton{
-   background-image: url('/images/plus_button.png');
+   background-image: url('/images/logo/plus_button.png');
    background-size:100% 100%;
    width:6%;
    float:right;
    
+   margin: 0;
+   padding: 0;
+   background-color: white;
+}
+#backButton{
+   background-image: url('/images/logo/logout.png');
+   background-size:100% 100%;
+   background-repeat:no-repeat;
+   width:6%;
+   float:right;
    margin: 0;
    padding: 0;
    background-color: white;
@@ -548,6 +660,90 @@ button.accent {
 	padding:0;
 	border:0;
 }
+.choi {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+.choi1 {
+	width: 150px;
+	height: 58px;
+}
+
+#choi2 {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.choi3 {
+	width: 150px;
+	height: 40px;
+}
+
+.gd {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.gd1 {
+	background : #d8d8d8;
+	width: 15%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.gd2 {
+	background : #d8d8d8;
+	width: 55%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.gd3 {
+	background : #d8d8d8;
+	width: 25%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+
+.gd4 {
+	border : 1px solid red;
+	height: 12%;
+}
+
+.notice_textarea_style{
+  border: 1px solid red;
+  width: 100%;
+  
+}
+
+
+
+
+
+
+#list_num_css {
+	
+	width: 11%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#list_text_css {
+	
+	margin-left: 15%;
+	margin-right: 5%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
 @media screen and (max-width: 730px) {
 
     .chat-container {
@@ -594,4 +790,3 @@ button.accent {
         font-size: 1.1em;
     }
 }
-

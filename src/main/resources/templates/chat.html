@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,27 +7,28 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/zzin.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
 
 <title>Talk-to-Talk</title>
-
 </head>
 
-<body style="overflow: auto;" id="bluepink">
+<body id="bluepink">
 
    <div id="navi">
-      <a href="/"><img id="logo" alt="Talk To Talk" src="/images/logo_pink.png"></a>
+      <a href="/"><img id="logo" alt="Talk To Talk" src="/images/logo/logo_pink.png"></a>
       <div class="navbar-collapse">
          <a th:href="@{/account/regist}" sec:authorize="!isAuthenticated()">
          	<span class="glyphicon glyphicon-user"></span> 회원가입</a>&nbsp &nbsp
          <a th:href="@{/account/login}" sec:authorize="!isAuthenticated()">
          	<span class="glyphicon glyphicon-log-in"></span> 로그인</a>
 		<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
-			<span style="color:white" sec:authentication="name">사용자</span>
+			<span class='hidden' id='span1' sec:authentication="name">사용자</span>
+			<span style="color:white" id='span2' th:text="${session.nickname}">사용자</span>
+			<span style="color:white">님 안녕하세요!</span>
 			<button type="submit">로그아웃</button>
 		</form>
       </div>
@@ -39,6 +40,11 @@
 				<div class="chat-container">
 					<div class="chat-header">
 						<h1>&nbsp &nbsp &nbsp &nbsp채팅방 목록<button id="createRoomButton"></button></h1>
+					</div>
+					<div class="gd">
+						<div class="gd1">방번호</div>
+						<div class="gd2">방제목</div>
+						<div class="gd3">현재인원/최대인원</div>
 					</div>
 					<ul id="listRoom" class="list-group">
 
@@ -56,10 +62,10 @@
 			<div id="chat-page" class="hidden">
 				<div class="chat-container">
 					<div class="chat-header">
-						<h2>
-							채팅방 [<span id="room-id-display"></span>]
-						</h2>
+						<h2>채팅방 [<span id="room-id-display"></span>]
+						<button id="backButton"></button></h2>
 					</div>
+					<h2 class="gd4" id="noticeArea" name="noticeArea" value="공지사항">공지사항</h2>
 					<div class="connecting">연결중...</div>
 					<ul id="messageArea">
 
@@ -75,7 +81,7 @@
 					</form>
 				</div>
 			</div>
-		</div>
+	</div>
 	
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

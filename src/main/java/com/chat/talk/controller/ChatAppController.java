@@ -3,8 +3,6 @@ package com.chat.talk.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -16,29 +14,35 @@ import org.springframework.stereotype.Controller;
 
 import com.chat.talk.model.ChatRoom;
 import com.chat.talk.model.Message;
+import com.chat.talk.services.FilesService;
+import com.chat.talk.services.RoomListService;
 
 @Controller
 public class ChatAppController
 {
-
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
-
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
+    @Autowired
+    private RoomListService roomListService;
+
+    @Autowired
+    private FilesService filesService;
+	
     List<ChatRoom> rooms;
+
 
     @Autowired
     public void ChatController()
     {
-        rooms = new ArrayList<ChatRoom>();
+        rooms = roomListService.List_All();
     }
     
     @MessageMapping("/chat/{roomId}/sendMessage")
     public void sendMessage(@DestinationVariable String roomId, @Payload Message chatMessage) {
     	addmessage(roomId,chatMessage);
+    	chatMessage.setPic(filesService.profile(chatMessage.getSenderid()));
         messagingTemplate.convertAndSend("/subscribe/chat/room/"+roomId,chatMessage);
-        //messagingTemplate.convertAndSend("/room/"+roomId,chatMessage);
     }
     
     @MessageMapping("/chat/{roomId}/addUser")
@@ -50,18 +54,20 @@ public class ChatAppController
             leaveMessage.setSender(chatMessage.getSender());
             addmessage(currentRoomId,chatMessage);
             messagingTemplate.convertAndSend("/subscribe/chat/room/"+currentRoomId, leaveMessage);
+            roomListService.Leave(currentRoomId);
         }
 
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
         addmessage(roomId,chatMessage);
         messagingTemplate.convertAndSend("/subscribe/chat/room/"+roomId, chatMessage);
+        roomListService.Join(chatMessage.getRoomid());
     }
 
 
     @SubscribeMapping("/chat/rooms")
     public List<ChatRoom> listOfRoom()
     {
-    	//System.out.println("Rooms: "+rooms.size());
+    	System.out.println("Rooms size: "+rooms.size());
         return rooms;
     }
 
@@ -83,6 +89,7 @@ public class ChatAppController
             List<Message> messages = new ArrayList<Message>();
             chatRoom.setMessages(messages);
             rooms.add(chatRoom);
+            roomListService.addroom(chatRoom);
         }
         messagingTemplate.convertAndSend("/subscribe/chat/rooms", rooms);
     }
@@ -98,6 +105,7 @@ public class ChatAppController
             leaveMessage.setSender(chatMessage.getSender());
             addmessage(currentRoomId,chatMessage);
             messagingTemplate.convertAndSend("/subscribe/chat/room/"+currentRoomId, leaveMessage);
+            roomListService.Leave(chatMessage.getRoomid());
         }
     }
 
@@ -118,7 +126,6 @@ public class ChatAppController
     @SubscribeMapping("chat/{roomId}/getPrevious")
     public List<Message> getPreviousMessages(@DestinationVariable String roomId)
     {
-        System.out.println("Room Id is: "+roomId);
         List<Message> messages = new ArrayList<Message>();
         for(ChatRoom room: rooms)
         {
@@ -131,4 +138,14 @@ public class ChatAppController
         return messages;
     }
 
+    @MessageMapping("/chat/{roomId}/notice")
+    public void notice(@DestinationVariable String roomId, @Payload Message chatMessage,SimpMessageHeaderAccessor headerAccessor)
+    {
+        String currentRoomId = (String) headerAccessor.getSessionAttributes().put("room_id", roomId);
+        if (currentRoomId != null) {
+            addmessage(currentRoomId,chatMessage);
+            roomListService.Notice(chatMessage.getRoomid(),chatMessage.getContent());
+            messagingTemplate.convertAndSend("/subscribe/chat/room/"+currentRoomId, chatMessage);
+        }
+    }
 }

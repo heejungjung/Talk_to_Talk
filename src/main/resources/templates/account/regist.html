@@ -9,17 +9,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/resources/static/css/style.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/zzin.css">
 
 <title>Talk-to-Talk</title>
 
 </head>
 
-
 <body style="overflow: auto;">
 
    <div id="navi_account">
-   <div class="banner"><a href="/"><img class="logo_account" src="/images/logo.png"></a></div>
+   <div class="banner"><a href="/"><img class="logo_account" src="/images/logo/logo.png"></a></div>
 	<div class="navbar-collapse">
          <a th:href="@{/account/regist}" sec:authorize="!isAuthenticated()">
          	<span class="glyphicon glyphicon-user"></span> 회원가입</a>&nbsp &nbsp
@@ -73,8 +72,8 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">성별</label>
 				<div class="col-md-4">
-					<input type="radio" name="sex" value="M"><img src="/images/man.png" width="50px"> 
-					<input type="radio" name="sex" value="F"><img src="/images/woman.png" width="50px">
+					<input type="radio" name="sex" value="M"><img src="/images/logo/man.png" width="50px"> 
+					<input type="radio" name="sex" value="F"><img src="/images/logo/woman.png" width="50px">
 				</div>
 			</div>
 
@@ -96,6 +95,7 @@
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="가입하기" /> 
 				<a href="/"><input type="button" class="btn btn-primary" value="돌아가기" /></a>
+				<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 			</div>
 		</form>
 	</div>
@@ -131,12 +131,8 @@
 	$("#imgInput").change(function() {
 		readURL(this);
 	});
-</script>
 
-<!-- 오늘날짜 넘어서 날짜 선택못하게.. id값은 idiot. -->
-<script type="text/javascript">
 	idiot.max = new Date().toISOString().split("T")[0];
 </script>
-
 
 </html>

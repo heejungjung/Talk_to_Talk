@@ -1,9 +1,11 @@
 package com.chat.talk.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.RandomStringUtils;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +19,13 @@ import com.chat.talk.model.User;
 import com.chat.talk.services.FilesService;
 import com.chat.talk.services.UserService;
 
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
+
 @Controller
 @RequestMapping("/account")
 public class AccountController {
-
+    
     @Autowired
     private UserService userService;
     
@@ -31,7 +36,17 @@ public class AccountController {
     public String login() {
         return "account/login";
     }
-
+    
+    @GetMapping("/loginProcess")
+    public String loginProcess() {
+        return "redirect:/";
+    }
+    
+    @GetMapping("/loginSuccess")
+    public String loginSuccess(HttpServletRequest request, User user) {
+        return "/";
+    }
+    
     @GetMapping("/regist")
     public String regist() {
         return "account/regist";
@@ -39,30 +54,60 @@ public class AccountController {
 
     @PostMapping("/regist")
     public String regist(User user, @RequestPart MultipartFile files) throws Exception{
-    	
+        userService.save(user);
 		Files file = new Files();
 
 		String sourceFileName = files.getOriginalFilename();
-		String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
-		File destinationFile;
-		String destinationFileName;
-		String fileUrl = "D:\\eclipse-workspace\\Talk\\src\\main\\resources\\static\\images\\";
+		//파일 첨부 여부
+		if(sourceFileName != null && !sourceFileName.equals("")) {
+			File destinationFile;
+			String destinationFileName;
+			String fileUrl = "D:\\eclipse-workspace\\ZZin\\src\\main\\resources\\static\\images\\"+user.getUsername()+"\\";
 
-		do {
-			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
+			destinationFileName = profiledate() + "_" + sourceFileName;
 			destinationFile = new File(fileUrl + destinationFileName);
-		} while (destinationFile.exists());
 
-		destinationFile.getParentFile().mkdirs();
-		files.transferTo(destinationFile);
+			destinationFile.getParentFile().mkdirs();
+			files.transferTo(destinationFile);
 
-		file.setFilename(destinationFileName);
-		file.setFile1(sourceFileName);
-		file.setFileurl(fileUrl);
-		filesService.save(file);
-    	
-        userService.save(user);
+			//썸네일
+			Thumbnails.of(fileUrl + destinationFileName).crop(Positions.CENTER).size(150, 150).toFile(new File(fileUrl,"s_"+destinationFileName));
+
+			file.setFilename(destinationFileName);
+			file.setRawname(sourceFileName);
+			file.setFileurl("/images/"+user.getUsername()+"/");
+		}else {
+			System.out.println("%%%%%%%%%"+user.getSex());
+			if(user.getSex()=="M") {
+				String[] pic = {"boy1.png", "boy2.png", "boy3.png"};
+				double randomValue = Math.random();
+		        int ran = (int)(randomValue * pic.length) -1;
+				String fname = pic[ran];
+				
+				file.setFilename(fname);
+				file.setFileurl("/images/");
+			}else {
+				String[] pic = {"girl1.png", "girl2.png", "girl3.png"};
+				double randomValue = Math.random();
+		        int ran = (int)(randomValue * pic.length) -1;
+				String fname = pic[ran];
+				
+				file.setFilename(fname);
+				file.setFileurl("/images/");
+			}
+		}
+		file.setUsername(user.getUsername());
+		System.out.print(user.getUsername());
+		filesService.save(file,user.getUsername());
+
         return "redirect:/";
     }
-    
+
+	private String profiledate() {
+	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	      Date date = new Date();
+	      String str = sdf.format(date);
+	      return str.replace("-","");
+	   }
+
 }
