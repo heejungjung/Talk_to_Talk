@@ -11,6 +11,9 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chat.talk.model.ChatRoom;
 import com.chat.talk.model.Message;
@@ -30,12 +33,25 @@ public class ChatAppController
     private FilesService filesService;
 	
     List<ChatRoom> rooms;
-
+    List<ChatRoom> searchRooms;
 
     @Autowired
     public void ChatController()
     {
         rooms = roomListService.List_All();
+        
+    }
+    
+    @GetMapping("/chat/search")
+    public String search(@RequestParam(value = "search") String search, Model model) {
+
+        rooms = roomListService.searchService(search);
+       
+       System.out.println("Search Rooms size: "+rooms.size());
+       
+       model.addAttribute("searchRooms", searchRooms);
+       
+       return "/chat";
     }
     
     @MessageMapping("/chat/{roomId}/sendMessage")

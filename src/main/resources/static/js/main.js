@@ -63,6 +63,12 @@ function listRoom()
 
 }
 
+//search 함수
+function searchlistRoom()
+{
+    currentSubscription = stompClient.subscribe(`/chat/search`, onListofRoom); //`/chatapp/chat/rooms`?????
+}
+
 // Result form subscribe function of listRoom is processed here
 function onListofRoom(payload)
 {

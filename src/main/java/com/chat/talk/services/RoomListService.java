@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.chat.talk.model.ChatRoom;
 import com.chat.talk.model.DBRoom;
 import com.chat.talk.repository.RoomListRepository;
+import com.chat.talk.repository.SearchListRepository;
 
 @Service
 public class RoomListService {
@@ -16,6 +17,25 @@ public class RoomListService {
 	@Autowired
 	RoomListRepository roomListRepository;
 	
+	@Autowired
+	SearchListRepository searchListRepository; 
+	   
+	public List<ChatRoom> searchService(String search) {
+       List<DBRoom> rooms = searchListRepository.findByTitleContains(search);
+       System.out.println("service===1 : " + rooms.size() + " name : " + rooms.get(0).getTitle());
+       
+       List<ChatRoom> result = new ArrayList<ChatRoom>();
+       if(rooms.isEmpty()) return result;
+       
+       for(DBRoom r : rooms)
+       {   
+           ChatRoom chatRoom = new ChatRoom();
+           chatRoom.setRoomid(r.getTitle());
+          result.add(chatRoom);
+       }
+        return result;
+    }
+	   
     public DBRoom addroom(ChatRoom chatRoom) {
     	DBRoom room = new DBRoom();
     	room.setTitle(chatRoom.getRoomid());
